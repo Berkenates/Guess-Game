@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="random.css">
+</head>
+<body>
+<div id="container">
+  <p>Guess a number between 1-100</p>
+  <p id="outputText">Enter a number below between 0 and 100</p>
+  <input type="nummber" id="userInput">
+  <button id="btn" onclick="game()">Enter</button>
+    <button id="newGame" onclick="newGame()">newGame()</button>
+
+</div>
+<script>
+    let output= document.getElementById("outputText");
+    let input = document.getElementById("userInput");
+    let number = [Math.floor(Math.random() * 100)];
+    let i=5;
+
+    input.addEventListener("keydown",function (event){
+        if (event.key=="Enter"){
+            game() ;
+        }
+    })
+
+
+
+    function newGame(){
+        document.getElementById("btn").disabled = false;
+        output.innerHTML = `You will start again! Enter a number below`;
+        i=5;
+    }
+
+
+    function game() {
+
+            if (input.value == number) {
+                output.innerHTML = `You guessed right, your number was ${number}`;
+            }
+            else if (i==0){
+                document.getElementById("btn").disabled = true;
+            }
+            else {
+
+                output.innerHTML = `You guessed wrong and your have ${i} life left`;
+
+                i--;
+
+            }
+
+    }
+
+
+
+</script>
+</body>
+</html>
